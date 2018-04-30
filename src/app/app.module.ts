@@ -8,6 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 
+import { HttpService } from './twitter/http.service';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -22,6 +24,6 @@ import { AppComponent } from './app.component';
   ],
 
   bootstrap: [AppComponent],
-  providers: []
+  providers: [HttpService]
 })
 export class AppModule { }
