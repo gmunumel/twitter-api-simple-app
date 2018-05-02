@@ -5,7 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { TwitterComponent } from './twitter/twitter.component';
 
 const appRoutes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/home' },
+  { path: '', pathMatch: 'full', redirectTo: '/twitter' },
   { path: 'home', component: HomeComponent },
   { path: 'twitter', component: TwitterComponent },
 ];

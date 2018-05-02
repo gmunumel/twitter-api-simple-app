@@ -7,41 +7,26 @@ import { HttpService } from './http.service';
   templateUrl: './twitter.component.html'
 })
 export class TwitterComponent {
-  title = 'app works!';
-  searchquery = '';
-  tweetsdata;
+  isAuthorize = false;
+  searchQuery = '';
+  tweetsData;
 
   constructor(private httpService: HttpService){}
 
-  makecall() {
-    // var headers = new Headers();
-
-    // headers.append('Content-Type', 'application/X-www-form-urlencoded');
-
-    // this.http.post('http://localhost:3000/authorize', {headers: headers}).subscribe((res) => {
-    //   console.log(res);
-    // })
-
-    // this.httpService.authorize('authorize').subscribe((res) => {
-    //   console.log(res);
-    // });
+  authorize() {
     this.httpService.post('authorize').subscribe((res) => {
-      console.log(res);
+      // console.log(res);
+      if (res.success) {
+        this.isAuthorize = true;
+      }
     });
   }
 
-  searchcall(){
-    // var headers = new Headers();
-    var searchTerm = 'query=' + this.searchquery;
-
-    // headers.append('Content-Type', 'application/X-www-form-urlencoded');
-
-    // this.http.post('http://localhost:3000/search', searchterm, {headers: headers}).subscribe((res) => {
-    //   this.tweetsdata = res.json().data.statuses;
-    // });
+  search(){
+    var searchTerm = 'query=' + this.searchQuery;
 
     this.httpService.post('search', searchTerm).subscribe((res) => {
-      this.tweetsdata = res.data.statuses;
+      this.tweetsData = res.data.statuses;
     });
   }
 }

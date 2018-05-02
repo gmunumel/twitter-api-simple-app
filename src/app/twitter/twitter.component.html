@@ -1,28 +1,26 @@
-<button class="waves-effect waves-light btn" (click)="makecall()">Authorize</button>
-<div class="row">
-    <form class="col s4">
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="hashtags" type="text" [(ngModel)]="searchquery" [ngModelOptions]="{standalone: true}">
-          <label for="hashtags">Search by hashtags</label>
-        </div>
-      </div>
-      <button class="waves-effect waves-light btn" (click)="searchcall()">Search</button>
-      <div *ngFor="let item of tweetsdata" class="col s12 m7">
-    <div class="card">
-      <div class="card-image">
-            <img style={width:10px,height:10px;} src={{item.user.profile_image_url}}>
+<div class="container">
+  <div class="jumbotron">
+    <h1>MIW - PFM</h1>
+    <h2>Estudio Conceptual Big Data utilizando Spring</h2>
+    <h3>Gabriel David Muñumel Mesa</h3>
   </div>
-        <div class="right-content">
-    <span class="card-title">{{item.user.name}}</span>
-    <div class="card-content">
-          <p>{{item.text}}</p>
-        </div>
-        <div class="card-action">
-          <a href="#">This is a link</a>
-        </div>
-    </div>
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">Obtener Información desde Twitter Dev API</div>
+    <div class="panel-body">
+      <label for="token">Solicitar Token</label>
+      <button type="button" class="btn btn-success" (click)="authorize()">Token</button>
+      <strong *ngIf="isAuthorize">¡Autorizado!</strong>
+      <br /><br />
+      <label for="hashtags">Buscar por hashtags</label>
+      <input id="hashtags" type="text" [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}">
+      <button type="button" class="btn btn-success" (click)="search()">Buscar</button>
+      <table class="table table-striped"> 
+        <thead><tr><th></th></tr></thead>
+          <tr *ngFor="let item of tweetsData">
+            <th><img style={width:10px,height:10px;} src={{item.user.profile_image_url}}></th>
+            <td><strong>{{item.user.name}}</strong> {{item.text}}</td>
+          </tr>
+      </table>
   </div>
-      </div>
-    </form>
 </div>
